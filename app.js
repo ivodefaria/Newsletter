@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
-
+const dotenv = require('dotenv').config();
 const app = express();
 
 app.use(express.static("public"));
@@ -39,7 +39,7 @@ app.post("/", function(req, res){
 
   const options = {
     method: "POST",
-    auth: "ivofaria:e5abe6fd09f82579aad908118b2f8991-us14"
+    auth: process.env.MAILCHIMP_AUTH
   };
 
   const request = https.request(url, options, function(response){
